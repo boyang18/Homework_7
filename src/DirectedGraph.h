@@ -21,6 +21,7 @@ private:
     // The value of the map entry is the "neighbours" of this node.
     // Here a node B is considered a "neighbour" of a node A when there is a edge that goes from A to B
     map<int, SingleLinkedList<int> *> nodes;
+    int root;
 
     void topologySort(int val, LinkedStack<int> &, set<int> &);
 
