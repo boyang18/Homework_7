@@ -1,3 +1,0 @@
-/home/boyang18/Homework_7/lib/googletest/CMakeFiles/rebuild_cache.dir
-/home/boyang18/Homework_7/lib/googletest/CMakeFiles/googletest.dir
-/home/boyang18/Homework_7/lib/googletest/CMakeFiles/edit_cache.dir
