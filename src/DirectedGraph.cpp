@@ -32,31 +32,34 @@ void DirectedGraph::printGraph() {
 }
 
 void DirectedGraph::topologySort(int root, LinkedStack<int> &stack, set<int> &visited) {
-    if (nodes.empty()) {
-        return;
-    }
-    vector<int> vector = nodes[root]->toVector();
+    visited.insert(root);
+    //https://iq.opengenus.org/topological-sorting-dfs/
+    //https://www.geeksforgeeks.org/topological-sorting/
 
-    for (int i = 0; i < vector.size(); i++) {
-        if (visited.find(vector[i]) == visited.end()) {
-            visited.insert(vector[i]);
-            topologySort(vector[i], stack, visited);
+    for (auto it = nodes[root]->begin(); it != nodes[root]->end(); it++) {
+        if (!(visited.find((*it)) != visited.end())) {
+            topologySort((*it), stack, visited);
         }
     }
+    //put result on stack
     stack.push(root);
 }
 
 vector<int> *DirectedGraph::topologySort() {
     // homework
+    //https://iq.opengenus.org/topological-sorting-dfs/
+    //https://www.geeksforgeeks.org/topological-sorting/
     vector<int> *vec = new vector<int>;
-    int val = root;
     LinkedStack<int> stack;
     set<int> visited;
-
-    topologySort(val, stack, visited);
+    for (auto it = nodes.begin(); it != nodes.end(); it++) {
+        if (!(visited.find((*it).first) != visited.end())) {
+            topologySort((*it).first, stack, visited);
+        }
+    }
 
     while (!stack.isEmpty()) {
-        std::cout << stack.peek() << ", ";
+        std::cout << stack.peek() << " ";
         vec->push_back(stack.peek());
         stack.pop();
     }
