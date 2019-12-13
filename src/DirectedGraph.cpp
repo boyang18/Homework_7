@@ -2,7 +2,6 @@
 #include <iostream>
 
 DirectedGraph::DirectedGraph(Edge *edges, int size) {
-    root = edges[0].src;
     for (int i = 0; i < size; i++) {
         int src = edges[i].src, dest = edges[i].dest;
         if (nodes.count(src) == 0) {
@@ -47,7 +46,6 @@ void DirectedGraph::topologySort(int root, LinkedStack<int> &stack, set<int> &vi
 
 vector<int> *DirectedGraph::topologySort() {
     // homework
-    //https://iq.opengenus.org/topological-sorting-dfs/
     //https://www.geeksforgeeks.org/topological-sorting/
     vector<int> *vec = new vector<int>;
     LinkedStack<int> stack;
